@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ЧУКАЕВ ЛАБ | AI Ecosystem</title>
     
-    <!-- Подключаем кибер-шрифт из Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Jura:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
@@ -58,7 +57,7 @@
             margin-bottom: 25px;
         }
 
-        /* Твое загруженное фото */
+        /* Фото подтягивается автоматически */
         .avatar-img {
             width: 110px;
             height: 110px;
@@ -202,7 +201,6 @@
 <body>
 
     <div class="container">
-        <!-- Блок аватара с кольцами -->
         <div class="avatar-complex">
             <div class="ring-outer"></div>
             <div class="ring-inner"></div>
@@ -212,7 +210,6 @@
         <h1>Чукаев Лаб</h1>
         <div class="subtitle">ИИ-генерация, промпты и автоматизация</div>
 
-        <!-- Кнопки -->
         <div class="btn-stack">
             
             <a href="https://telegram.me/ai_prompts_chukaev" class="btn btn-cyan" target="_blank">
@@ -230,175 +227,6 @@
                 <div class="btn-text">Matrix AI Бот</div>
             </a>
 
-        </div>
-    </div>
-
-</body>
-</html>            border-radius: 50%;
-            /* ЗАМЕНИ ЭТУ ССЫЛКУ */
-            background-image: url('[ссылка_на_фото_аватара]');
-            background-size: cover;
-            background-position: center;
-            border: 2px solid rgba(0, 242, 254, 0.1);
-            box-shadow: 0 0 25px var(--cyan-glow), inset 0 0 10px var(--purple-glow);
-            z-content: 2;
-        }
-
-        /* Сложные кольца вокруг аватара */
-        .avatar-rings {
-            position: absolute;
-            top: -10px; left: -10px; right: -10px; bottom: -10px;
-            border-radius: 50%;
-            border: 1px solid rgba(0, 242, 254, 0.1);
-            animation: ring-pulse 4s infinite linear;
-        }
-
-        .avatar-rings::before {
-            content: '';
-            position: absolute;
-            top: 5px; left: 5px; right: 5px; bottom: 5px;
-            border-radius: 50%;
-            border: 1px solid rgba(139, 92, 246, 0.1);
-            animation: ring-pulse-inner 3s infinite reverse linear;
-        }
-
-        @keyframes ring-pulse {
-            0% { transform: scale(1); opacity: 0.1; }
-            50% { transform: scale(1.05); opacity: 0.3; }
-            100% { transform: scale(1); opacity: 0.1; }
-        }
-
-        @keyframes ring-pulse-inner {
-            0% { transform: scale(1); opacity: 0.1; }
-            50% { transform: scale(0.98); opacity: 0.3; }
-            100% { transform: scale(1); opacity: 0.1; }
-        }
-
-        h1 {
-            font-size: 26px;
-            margin: 0 0 8px 0;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, var(--neon-cyan) 0%, #fff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 15px;
-            margin: 0 0 36px 0;
-        }
-
-        /* Сетка кнопок */
-        .links-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        /* Базовый стиль кнопок (контроль-панель) */
-        .btn {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 18px 24px;
-            border-radius: 14px;
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.2s ease;
-            box-sizing: border-box;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            overflow: hidden;
-            background: rgba(13, 18, 34, 0.5);
-        }
-
-        /* Кнопка 1: Промпты (Cyan) */
-        .btn-prompts {
-            border-color: rgba(0, 242, 254, 0.1);
-            box-shadow: inset 0 0 10px var(--cyan-glow);
-        }
-
-        /* Кнопка 2: Бот (Purple) */
-        .btn-bot {
-            border-color: rgba(139, 92, 246, 0.1);
-            box-shadow: inset 0 0 10px var(--purple-glow);
-        }
-
-        /* Кастомный TG иконка */
-        .tg-icon {
-            width: 22px;
-            height: 22px;
-            margin-right: 14px;
-            display: inline-block;
-            background: var(--grad-dark);
-            border-radius: 50%;
-            position: relative;
-        }
-
-        .tg-icon::before {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 14px; height: 14px;
-            transform: translate(-50%, -50%);
-            background-color: var(--neon-cyan);
-            border-radius: 50%;
-            /* Микро- wireframe TG лого */
-            background-image: 
-                radial-gradient(circle at center, transparent 30%, var(--bg-deep) 35%, transparent 40%),
-                linear-gradient(var(--bg-deep) 1px, transparent 1px),
-                linear-gradient(90deg, var(--bg-deep) 1px, transparent 1px);
-            background-size: 100% 100%, 3px 3px, 3px 3px;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .btn:active {
-            transform: translateY(1px);
-        }
-
-        .btn-tag {
-            position: absolute;
-            top: 0;
-            right: 12px;
-            background: rgba(139, 92, 246, 0.2);
-            font-size: 10px;
-            padding: 3px 7px;
-            border-bottom-left-radius: 7px;
-            border-bottom-right-radius: 7px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border: 1px solid rgba(139, 92, 246, 0.1);
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <div class="avatar-container">
-            <div class="avatar-rings"></div>
-            <div class="avatar"></div>
-        </div>
-
-        <h1>Чукаев Лаб</h1>
-        <div class="subtitle">ИИ-генерация, промпты и автоматизация</div>
-
-        <div class="links-grid">
-            <!-- Кнопка ТГ с промптами -->
-            <a href="https://telegram.me/ai_prompts_chukaev" class="btn btn-prompts" target="_blank">
-                <span class="tg-icon"></span>ТГ-Канал: Нейросети & Промпты
-            </a>
-
-            <!-- Кнопка Бота -->
-            <a href="https://telegram.me/matrixai_robot?start=r-943037293" class="btn btn-bot" target="_blank">
-                <span class="tg-icon"></span><span class="btn-tag">Запустить</span>Matrix AI Бот
-            </a>
         </div>
     </div>
 
