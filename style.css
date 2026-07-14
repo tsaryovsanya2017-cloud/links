@@ -58,7 +58,7 @@ body {
     width: 110px;
     height: 110px;
     border-radius: 50%;
-    /* Исправленный путь: без кавычек и лишних точек */
+    /* Путь к фото без лишних точек и кавычек */
     background-image: url('IMG_20260714_024154_611.jpg');
     background-size: cover;
     background-position: center;
