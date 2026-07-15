@@ -27,7 +27,10 @@
 
         * { box-sizing: border-box; }
 
-        html { min-height: 100%; background: var(--bg); }
+        html {
+            min-height: 100%;
+            background: var(--bg);
+        }
 
         body {
             min-height: 100vh;
@@ -68,12 +71,38 @@
             animation: scanlines 12s linear infinite;
         }
 
-        .ambient { position: fixed; inset: 0; z-index: -2; overflow: hidden; pointer-events: none; }
-        .ambient::before, .ambient::after {
-            content: ""; position: absolute; width: 480px; height: 480px; border-radius: 50%; filter: blur(100px); opacity: .17;
+        .ambient {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            overflow: hidden;
+            pointer-events: none;
         }
-        .ambient::before { top: -170px; left: -220px; background: var(--cyan); animation: ambientOne 11s ease-in-out infinite alternate; }
-        .ambient::after { right: -240px; bottom: -170px; background: var(--purple); animation: ambientTwo 13s ease-in-out infinite alternate; }
+
+        .ambient::before,
+        .ambient::after {
+            content: "";
+            position: absolute;
+            width: 480px;
+            height: 480px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: .17;
+        }
+
+        .ambient::before {
+            top: -170px;
+            left: -220px;
+            background: var(--cyan);
+            animation: ambientOne 11s ease-in-out infinite alternate;
+        }
+
+        .ambient::after {
+            right: -240px;
+            bottom: -170px;
+            background: var(--purple);
+            animation: ambientTwo 13s ease-in-out infinite alternate;
+        }
 
         .page {
             width: min(100%, var(--content-width));
@@ -92,131 +121,47 @@
             margin-top: 4px;
             display: grid;
             place-items: center;
-            filter: drop-shadow(0 0 22px rgba(35, 238, 255, .22)) drop-shadow(0 0 45px rgba(132, 70, 255, .14));
+            filter:
+                drop-shadow(0 0 22px rgba(35, 238, 255, .22))
+                drop-shadow(0 0 45px rgba(132, 70, 255, .14));
         }
 
         .logo-halo {
-            position: absolute; width: 218px; height: 218px; border-radius: 50%;
+            position: absolute;
+            width: 218px;
+            height: 218px;
+            border-radius: 50%;
             background: radial-gradient(circle, rgba(37,245,255,.18), transparent 66%);
-            filter: blur(8px); animation: haloPulse 3.3s ease-in-out infinite;
+            filter: blur(8px);
+            animation: haloPulse 3.3s ease-in-out infinite;
         }
 
-        .ring { position: absolute; border-radius: 50%; pointer-events: none; }
-        .ring-a { width: 284px; height: 284px; border: 2px dashed rgba(37,245,255,.39); animation: rotateRight 18s linear infinite; }
-        .ring-b { width: 252px; height: 252px; border: 4px solid transparent; border-top-color: var(--purple); border-right-color: rgba(39,245,255,.85); animation: rotateLeft 9s linear infinite; }
-        .ring-c { width: 228px; height: 228px; border: 2px solid rgba(39,245,255,.2); border-left-color: transparent; border-right-color: transparent; animation: rotateRight 6.5s linear infinite; }
-
-        .segment-ring {
-            position: absolute; width: 270px; height: 270px; border-radius: 50%;
-            background: conic-gradient(from 20deg, transparent 0deg 32deg, rgba(39,245,255,.95) 32deg 48deg, transparent 48deg 113deg, rgba(154,85,255,.9) 113deg 135deg, transparent 135deg 217deg, rgba(39,245,255,.85) 217deg 233deg, transparent 233deg 309deg, rgba(154,85,255,.9) 309deg 326deg, transparent 326deg);
-            -webkit-mask: radial-gradient(circle, transparent 0 124px, #000 125px 134px, transparent 135px);
-            mask: radial-gradient(circle, transparent 0 124px, #000 125px 134px, transparent 135px);
-            animation: rotateRight 12s linear infinite;
+        .ring {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
         }
 
-        .logo-frame {
-            position: relative; width: 204px; height: 204px; z-index: 5; padding: 7px; border-radius: 50%;
-            background: conic-gradient(from 0deg, var(--cyan), #8afaff, var(--purple), #e355ff, var(--cyan));
-            box-shadow: 0 0 14px var(--cyan), 0 0 34px rgba(39,245,255,.48), 0 0 65px rgba(154,85,255,.25);
-            animation: logoFloat 4s ease-in-out infinite, glowPulse 3s ease-in-out infinite;
+        .ring-a {
+            width: 284px;
+            height: 284px;
+            border: 2px dashed rgba(37,245,255,.39);
+            box-shadow: inset 0 0 22px rgba(37,245,255,.08), 0 0 18px rgba(37,245,255,.08);
+            animation: rotateRight 18s linear infinite;
         }
 
-        .logo-image { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: #08122d; animation: imageBreath 5s ease-in-out infinite; }
-
-        .title {
-            margin: 2px 0 0; font-family: "Russo One", "Jura", sans-serif; font-size: clamp(38px, 8vw, 60px);
-            letter-spacing: .075em; text-align: center; text-transform: uppercase;
-            text-shadow: 0 0 5px #fff, 0 0 12px var(--cyan), 0 0 30px rgba(39,245,255,.62);
+        .ring-b {
+            width: 252px;
+            height: 252px;
+            border: 4px solid transparent;
+            border-top-color: var(--purple);
+            border-right-color: rgba(39,245,255,.85);
+            border-bottom-color: rgba(154,85,255,.18);
+            filter: drop-shadow(0 0 7px var(--purple-soft));
+            animation: rotateLeft 9s linear infinite;
         }
 
-        .subtitle { margin: 19px 0 48px; color: #d4d8ea; font-size: clamp(16px, 4vw, 24px); font-weight: 600; text-align: center; }
-
-        .links { width: 100%; display: grid; gap: 26px; }
-
-        .cyber-button {
-            --accent: var(--cyan); --accent-soft: var(--cyan-soft); --accent-dark: var(--cyan-dark);
-            position: relative; min-height: 132px; padding: 20px 31px 20px 24px; display: grid; grid-template-columns: 104px 1fr;
-            align-items: center; gap: 25px; color: var(--white); text-decoration: none;
-            background: linear-gradient(105deg, rgba(11,33,62,.93), rgba(10,17,44,.95) 56%, rgba(11,10,39,.96));
-            border: 2px solid var(--accent); border-radius: 4px;
-            clip-path: polygon(20px 0, calc(100% - 20px) 0, 100% 20px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px), 0 20px);
-            transition: transform .25s ease, filter .25s ease;
-        }
-
-        .cyber-button.purple { --accent: var(--purple); --accent-soft: var(--purple-soft); --accent-dark: var(--purple-dark); }
-        .cyber-button.orange { --accent: #ffb703; --accent-soft: rgba(255, 183, 3, 0.4); --accent-dark: rgba(255, 183, 3, 0.1); }
-
-        .circuit-lines {
-            position: absolute; inset: 0; z-index: -1; opacity: .33; pointer-events: none;
-            background: linear-gradient(90deg, transparent 0 42%, var(--accent-soft) 42% 42.5%, transparent 42.5% 100%), linear-gradient(0deg, transparent 0 72%, var(--accent-soft) 72% 73%, transparent 73% 100%);
-        }
-
-        .corner { position: absolute; width: 28px; height: 28px; border: 4px solid var(--accent); }
-        .corner-tl { top: 0; left: 0; border-right: none; border-bottom: none; }
-        .corner-br { right: 0; bottom: 0; border-left: none; border-top: none; }
-
-        .icon-wrap { position: relative; width: 104px; height: 88px; display: grid; place-items: center; border-right: 1px solid var(--accent-soft); }
-        .icon-orbit { position: absolute; width: 78px; height: 78px; border: 1px solid var(--accent-soft); border-radius: 50%; animation: iconRotate 8s linear infinite; }
-        .telegram-icon { width: 54px; height: 54px; }
-
-        .button-title { display: block; font-size: clamp(20px, 4.3vw, 31px); font-weight: 700; text-transform: uppercase; line-height: 1.2; }
-        .button-note { display: block; margin-top: 7px; color: var(--accent); font-size: 11px; font-weight: 700; text-transform: uppercase; }
-
-        .launch-tag {
-            position: absolute; top: -1px; right: 23px; z-index: 10; padding: 8px 14px;
-            color: white; font-size: 11px; font-weight: 700; text-transform: uppercase;
-            background: linear-gradient(180deg, #b980ff, #7433e9); border-radius: 0 0 7px 7px;
-        }
-
-        @keyframes rotateRight { to { transform: rotate(360deg); } }
-        @keyframes rotateLeft { to { transform: rotate(-360deg); } }
-        @keyframes gridMove { to { background-position: 42px 42px; } }
-        @keyframes scanlines { to { transform: translateY(12px); } }
-    </style>
-</head>
-<body>
-    <div class="ambient"></div>
-
-    <main class="page">
-        <section class="logo-zone">
-            <div class="logo-halo"></div>
-            <div class="ring ring-a"></div>
-            <div class="segment-ring"></div>
-            <div class="ring ring-b"></div>
-            <div class="ring ring-c"></div>
-            <div class="logo-frame">
-                <img class="logo-image" src="./IMG_20260714_024154_611.jpg" alt="Чукаев Лаб">
-            </div>
-        </section>
-
-        <h1 class="title">Чукаев Лаб</h1>
-        <p class="subtitle">ИИ-генерация, промпты и автоматизация</p>
-
-        <section class="links">
-            <a class="cyber-button" href="https://telegram.me/ai_prompts_chukaev" target="_blank">
-                <span class="circuit-lines"></span><span class="corner corner-tl"></span><span class="corner corner-br"></span>
-                <span class="icon-wrap"><span class="icon-orbit"></span><svg class="telegram-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#27f5ff" opacity="0.14"/><path fill="#ecffff" d="M18.92 5.63 3.86 11.44c-1.03.41-1.02.98-.19 1.24l3.87 1.21 1.49 4.56c.18.5.09.7.61.7.4 0 .58-.18.81-.4l1.87-1.82 3.89 2.87c.72.4 1.24.19 1.42-.67l2.57-12.11c.27-1.06-.4-1.54-1.28-1.19ZM8.15 13.61l8.76-5.53c.44-.27.84-.13.51.16l-7.24 6.54-.28 3.04-1.75-4.21Z"/></svg></span>
-                <span class="button-copy"><span class="button-title">ТГ-канал:<br>Нейросети & Промпты</span><span class="button-note">Перейти в канал</span></span>
-            </a>
-
-            <a class="cyber-button purple" href="https://telegram.me/matrixai_robot?start=r-943037293" target="_blank">
-                <span class="launch-tag">Запустить</span>
-                <span class="circuit-lines"></span><span class="corner corner-tl"></span><span class="corner corner-br"></span>
-                <span class="icon-wrap"><span class="icon-orbit"></span><svg class="telegram-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#9a55ff" opacity="0.16"/><path fill="#ffffff" d="M18.92 5.63 3.86 11.44c-1.03.41-1.02.98-.19 1.24l3.87 1.21 1.49 4.56c.18.5.09.7.61.7.4 0 .58-.18.81-.4l1.87-1.82 3.89 2.87c.72.4 1.24.19 1.42-.67l2.57-12.11c.27-1.06-.4-1.54-1.28-1.19ZM8.15 13.61l8.76-5.53c.44-.27.84-.13.51.16l-7.24 6.54-.28 3.04-1.75-4.21Z"/></svg></span>
-                <span class="button-copy"><span class="button-title">Matrix AI Бот</span><span class="button-note">Открыть Telegram-бота</span></span>
-            </a>
-
-            <a class="cyber-button orange" href="https://t.me/ai_prompts_chukaev/1863" target="_blank">
-                <span class="circuit-lines"></span><span class="corner corner-tl"></span><span class="corner corner-br"></span>
-                <span class="icon-wrap"><span class="icon-orbit"></span>
-                <svg class="telegram-icon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></span>
-                <span class="button-copy"><span class="button-title">Обучение<br>ИИ-роликам</span><span class="button-note">Смотреть урок</span></span>
-            </a>
-        </section>
-
-        <footer class="footer" style="margin-top: 42px; color: rgba(198,205,232,.48); font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;">
-            Chukaev Lab · AI Ecosystem
-        </footer>
-    </main>
-</body>
-</html>
+        .ring-c {
+            width: 228px;
+            height: 228px;
+            border: 2px solid rgba(39,2
